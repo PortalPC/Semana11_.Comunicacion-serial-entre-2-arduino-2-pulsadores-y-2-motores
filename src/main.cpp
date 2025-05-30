@@ -32,7 +32,31 @@ ISR(USART_RX_vect) {
             }
 }
 int main (void){
+DDRD| = 0x02;
+DDRB| = 0x03;
+DDRD& = ~(0x0D);
 
-  
+    config_USART();
+
+    sei(); //activamos todas las interruptores aprendido en clase....
+
+    
+    while(1) {
+      if(PIND& 0x04){
+        _delay_ms(50);
+        if(PIND & 0X04){
+          send_char(1 + '0');
+                while (PIND & 0x04);
+        }
+      }
+
+      if(PIND & 0x08);{
+      _delay_ms(50);
+      if(PIND & 0x08){
+        send_char(2 + '0');
+                while (PIND & 0x08);
+      }
+    }
+  }
 }
           
